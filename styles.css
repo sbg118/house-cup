@@ -1,76 +1,435 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #081c15;
-    color: white;
+/* =========================
+   GOOGLE FONTS
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap');
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-/* HERO SECTION */
+html{
+    scroll-behavior:smooth;
+}
 
-.hero {
-    height: 100vh;
+body{
+
+    font-family:'Montserrat', sans-serif;
+
+    color:white;
 
     background:
-        linear-gradient(
-            rgba(0,0,0,.50),
-            rgba(0,0,0,.70)
-        ),
-        url("hero-bg.jpg");
+    linear-gradient(
+        rgba(0,0,0,.6),
+        rgba(0,0,0,.7)
+    ),
+    url("hero-bg.jpg");
 
-    background-size: cover;
-    background-position: center;
+    background-attachment:fixed;
+    background-size:cover;
+    background-position:center;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    text-align: center;
+    overflow-x:hidden;
 }
 
-.hero h1 {
-    font-size: 6rem;
-    color: #ffb703;
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+
+    width:100%;
+
+    z-index:1000;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px 50px;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(8px);
+
+    border-bottom:2px solid #ffb703;
+}
+
+.logo{
+
+    font-family:'Cinzel', serif;
+
+    color:#ffb703;
+
+    font-size:1.5rem;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+}
+
+.nav-links{
+
+    display:flex;
+    gap:30px;
+}
+
+.nav-links a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+
+    color:#ffb703;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:100px 30px;
+}
+
+.hero-overlay{
+
+    max-width:900px;
+}
+
+.hero h1{
+
+    font-family:'Cinzel', serif;
+
+    font-size:6rem;
+
+    color:#ffb703;
 
     text-shadow:
-        0 0 20px #ffb703,
-        0 0 40px #ffb703;
+    0 0 10px rgba(255,183,3,.8),
+    0 0 30px rgba(255,183,3,.6),
+    0 0 50px rgba(255,183,3,.4);
+
+    margin-bottom:20px;
 }
 
-.hero p {
-    font-size: 1.8rem;
+.hero p{
+
+    font-size:1.5rem;
+
+    margin-bottom:15px;
 }
 
-/* SECTIONS */
+.hero-subtitle{
 
-section {
-    padding: 60px 10%;
+    max-width:700px;
+
+    margin:0 auto 35px auto;
+
+    line-height:1.8;
 }
 
-h2 {
-    color: #ffb703;
-    font-size: 2.5rem;
+.hero-button{
+
+    display:inline-block;
+
+    background:#ffb703;
+
+    color:black;
+
+    padding:16px 36px;
+
+    border-radius:50px;
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    transition:.3s;
 }
 
-/* CARDS */
+.hero-button:hover{
 
-.card {
-    background: rgba(0,0,0,.6);
+    transform:scale(1.08);
 
-    border: 2px solid #ffb703;
+    background:#ffc933;
+}
 
-    border-radius: 20px;
 
-    padding: 25px;
+/* =========================
+   MAIN SECTIONS
+========================= */
 
-    margin-bottom: 20px;
+section{
+
+    padding:80px 10%;
+}
+
+section h2{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+    font-size:3rem;
+
+    font-family:'Cinzel', serif;
+
+    color:#ffb703;
+}
+
+
+/* =========================
+   HOUSE CARDS
+========================= */
+
+.house-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:30px;
+}
+
+.house-card{
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(0,0,0,.75),
+        rgba(25,25,25,.9)
+    );
+
+    border:3px solid #ffb703;
+
+    border-radius:25px;
+
+    padding:30px;
+
+    text-align:center;
 
     box-shadow:
-        0 0 15px rgba(255,183,3,.4);
+    0 0 25px rgba(255,183,3,.25);
+
+    transition:.3s;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.house-card:hover{
 
-    transition: .3s ease;
+    transform:
+    translateY(-8px)
+    scale(1.02);
+
+    box-shadow:
+    0 0 35px rgba(255,183,3,.5);
+}
+
+.house-card h3{
+
+    font-size:1.5rem;
+
+    margin-bottom:15px;
+}
+
+
+/* =========================
+   CHALLENGES
+========================= */
+
+.challenge-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+}
+
+.challenge-card{
+
+    background:
+    rgba(0,0,0,.70);
+
+    border-left:
+    6px solid #ffb703;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    transition:.3s;
+}
+
+.challenge-card:hover{
+
+    transform:translateY(-5px);
+}
+
+
+/* =========================
+   ACTIVITY FEED
+========================= */
+
+.activity-card{
+
+    background:
+    rgba(0,0,0,.75);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+
+    border:2px solid rgba(255,183,3,.4);
+}
+
+
+/* =========================
+   CHAMPIONS
+========================= */
+
+.champion-card{
+
+    background:
+    linear-gradient(
+    135deg,
+    rgba(255,183,3,.15),
+    rgba(0,0,0,.8)
+    );
+
+    border:3px solid #ffb703;
+
+    border-radius:25px;
+
+    padding:40px;
+
+    text-align:center;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    background:rgba(0,0,0,.8);
+
+    border-top:3px solid #ffb703;
+}
+
+footer h3{
+
+    font-family:'Cinzel', serif;
+
+    color:#ffb703;
+
+    margin-bottom:10px;
+}
+
+
+/* =========================
+   FLOATING FOOTPRINTS
+========================= */
+
+body::before{
+
+    content:"🦖";
+
+    position:fixed;
+
+    top:120px;
+    left:15px;
+
+    font-size:3rem;
+
+    opacity:.12;
+
+    pointer-events:none;
+}
+
+body::after{
+
+    content:"🦴";
+
+    position:fixed;
+
+    bottom:80px;
+    right:20px;
+
+    font-size:3rem;
+
+    opacity:.12;
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+    .hero h1{
+
+        font-size:3rem;
+    }
+
+    .navbar{
+
+        flex-direction:column;
+
+        gap:15px;
+
+        padding:15px;
+    }
+
+    .nav-links{
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+    }
+
+    section{
+
+        padding:60px 20px;
+    }
 }
