@@ -1,32 +1,76 @@
 body {
     margin: 0;
-    background: #1F3A2E;
+    font-family: Arial, sans-serif;
+    background-color: #081c15;
     color: white;
-    font-family: 'Montserrat', sans-serif;
 }
 
+/* HERO SECTION */
+
 .hero {
+    height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.50),
+            rgba(0,0,0,.70)
+        ),
+        url("hero-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
-    padding: 80px 20px;
 }
 
 .hero h1 {
-    font-family: 'Cinzel', serif;
-    color: #D4A24C;
-    font-size: 4rem;
+    font-size: 6rem;
+    color: #ffb703;
+
+    text-shadow:
+        0 0 20px #ffb703,
+        0 0 40px #ffb703;
 }
 
+.hero p {
+    font-size: 1.8rem;
+}
+
+/* SECTIONS */
+
 section {
-    padding: 40px;
+    padding: 60px 10%;
 }
 
 h2 {
-    color: #D4A24C;
+    color: #ffb703;
+    font-size: 2.5rem;
 }
 
+/* CARDS */
+
 .card {
-    background: #232523;
-    padding: 20px;
-    border-radius: 12px;
-    margin-bottom: 15px;
+    background: rgba(0,0,0,.6);
+
+    border: 2px solid #ffb703;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 0 15px rgba(255,183,3,.4);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    transition: .3s ease;
 }
