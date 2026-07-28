@@ -1,36 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>The House Cup</title>
 
-    <link rel="stylesheet" href="styles.css">
+    ">
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400ily=Montserrat:wght@300;400;500;600&display=swap
+    =Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+    <nav class="navbar">
+        <div class="logo">
+            🦖 THE HOUSE CUP
+        </div>
+
+        <div class="nav-links">
+            #standingsStandings</a>
+            #challenges>
+            #activity
+            #championsChampions</a>
+        </div>
+    </nav>
+
     <header class="hero">
-        <h1>THE HOUSE CUP</h1>
-        <p>Compete. Collaborate. Conquer.</p>
+
+        <div class="hero-overlay">
+
+            <h1>THE HOUSE CUP</h1>
+
+            <p>
+                Compete. Collaborate. Conquer.
+            </p>
+
+            <p class="hero-subtitle">
+                Journey through a prehistoric world of competition,
+                teamwork, and adventure as Houses battle for cup glory.
+            </p>
+
+            ings" class="hero-button">
+                View Standings
+            </a>
+
+        </div>
+
     </header>
 
-    <section>
-        <h2>Current Standings</h2>
+    <section id="standings">
+
+        <h2>🏆 Current Standings</h2>
+
+        <div class="house-grid">
+
+            <div class="house-card">
+                <h3>🦖 Raptor House</h3>
+                <div id="raptor-points">Loading...</div>
+            </div>
+
+            <div class="house-card">
+                <h3>🦴 T-Rex House</h3>
+                <div id="trex-points">Loading...</div>
+            </div>
+
+            <div class="house-card">
+                <h3>🌿 Triceratops House</h3>
+                <div id="triceratops-points">Loading...</div>
+            </div>
+
+            <div class="house-card">
+                <h3>🥚 Brachiosaurus House</h3>
+                <div id="brachiosaurus-points">Loading...</div>
+            </div>
+
+        </div>
+
         <div id="leaderboard"></div>
+
     </section>
 
-    <section>
-        <h2>Recent Activity</h2>
-        <div id="activity"></div>
+    <section id="challenges">
+
+        <h2>🌋 Current Challenges</h2>
+
+        <div class="challenge-grid">
+
+            <div class="challenge-card">
+                <h3>📚 Academic Explorer</h3>
+                <p>Attend tutoring or academic support events.</p>
+            </div>
+
+            <div class="challenge-card">
+                <h3>🦕 Dino Attendance</h3>
+                <p>Earn points by participating in House events.</p>
+            </div>
+
+            <div class="challenge-card">
+                <h3>🏆 House Battle</h3>
+                <p>Compete against rival Houses for bonus points.</p>
+            </div>
+
+        </div>
+
     </section>
+
+    <section id="activity">
+
+        <h2>🦴 Recent Discoveries</h2>
+
+        <div id="activity-feed">
+
+            <div class="activity-card">
+                Loading activity feed...
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="champions">
+
+        <h2>🎖 Hall of Champions</h2>
+
+        <div class="champion-card">
+
+            <h3>House Cup Legacy</h3>
+
+            <p>
+                Previous House Cup winners and legendary achievements
+                will be displayed here.
+            </p>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        <h3>🦖 The House Cup</h3>
+
+        <p>
+            Auburn Engineering • Adventure Awaits
+        </p>
+
+    </footer>
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
