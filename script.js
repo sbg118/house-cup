@@ -3,81 +3,104 @@
 // ===========================
 
 fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vT_2X7hLkzv-vT2VV7Fh8f15tyngUPblwmGwgGlfFae6MV3yxT3UykBW3UJvSgZJbNw02ihQBoF6YXq/pub?gid=392305567&single=true&output=csv")
-  .then(response => response.text())
-  .then(data => {
+.then(response => response.text())
+.then(data => {
 
-    const rows = data.trim().split("\n").slice(1);
+    let rows = data.trim().split("\n").slice(1);
 
     let html = "";
 
     rows.forEach(row => {
 
-      const cols = row.split(",");
+        let cols = row.split(",");
 
-      if (cols.length >= 2) {
+        if(cols[0]) {
 
-        html += `
-          <div class="house-card">
-            <h3>${cols[0]}</h3>
-            <p>${cols[1]} Points</p>
-          </div>
-        `;
-      }
+            html += `
+                <div class="house-card">
+                    <h3>${cols[0]}</h3>
+                    <p>${cols[1] || 0} Points</p>
+                </div>
+            `;
+        }
+
     });
 
     document.getElementById("leaderboard").innerHTML = html;
 
-  })
-  .catch(error => {
-    console.error("Standings Error:", error);
-  });
+});
 
 
 // ===========================
-// POSITIVE & NEGATIVE POINTS
+// POSITIVE CATEGORIES
 // ===========================
 
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vT_2X7hLkzv-vT2VV7Fh8f15tyngUPblwmGwgGlfFae6MV3yxT3UykBW3UJvSgZJbNw02ihQBoF6YXq/pub?gid=1642775811&single=true&output=csv")
-  .then(response => response.text())
-  .then(data => {
+const positiveCategories = [
 
-    const rows = data.trim().split("\n").slice(1);
+["Correct Time Cards (per week/per team)",30],
+["Student Feedback Survey",1],
+["Appointment Reports / Summaries",40],
+["Clean Tutoring Space",5],
+["Digitize Notes",15],
+["Help with Question of the Day",5],
+["House Cup",200],
+["Attend Tutoring Events",50],
+["Creating Supplemental Resources",15],
+["Representing the Tutoring Center",35],
+["Submitting Schedule Requests Early",5],
+["Helping with Bulletin Board / Window Display",5],
+["Encouraging a Friend to Apply",35],
+["Responding to Events / Invites",1],
+["Organizing Review Session",50]
 
-    let positiveHTML = "";
-    let negativeHTML = "";
+];
 
-    rows.forEach(row => {
+let positiveHTML = "";
 
-      const cols = row.split(",");
+positiveCategories.forEach(item => {
 
-      // Positive Category
-      if (cols[0] && cols[1]) {
+    positiveHTML += `
+        <div class="challenge-card">
+            <strong>${item[0]}</strong>
+            <br>
+            ${item[1]} Points
+        </div>
+    `;
 
-        positiveHTML += `
-          <div class="challenge-card">
-            <strong>${cols[0]}</strong><br>
-            ${cols[1]} Points
-          </div>
-        `;
-      }
+});
 
-      // Negative Category
-      if (cols[2] && cols[3]) {
+document.getElementById("positive-categories").innerHTML =
+positiveHTML;
 
-        negativeHTML += `
-          <div class="challenge-card">
-            <strong>${cols[2]}</strong><br>
-            ${cols[3]} Points
-          </div>
-        `;
-      }
 
-    });
+// ===========================
+// NEGATIVE CATEGORIES
+// ===========================
 
-    document.getElementById("positive-categories").innerHTML = positiveHTML;
-    document.getElementById("negative-categories").innerHTML = negativeHTML;
+const negativeCategories = [
 
-  })
-  .catch(error => {
-    console.error("Point Categories Error:", error);
-  });
+["Time Card Corrections",-5],
+["Incomplete Appointment Reports",-5],
+["Submitting Schedule Requests Late",-10],
+["Not Responding to Emails Within 48 Hours",-10],
+["Additional Email Needed for Response",-10],
+["No-Show for Scheduled Shift",-50]
+
+];
+
+let negativeHTML = "";
+
+negativeCategories.forEach(item => {
+
+    negativeHTML += `
+        <div class="challenge-card">
+            <strong>${item[0]}</strong>
+            <br>
+            ${item[1]} Points
+        </div>
+    `;
+
+});
+
+document.getElementById("negative-categories").innerHTML =
+negativeHTML;
