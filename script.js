@@ -1,44 +1,53 @@
-document.getElementById("leaderboard").innerHTML = `
+const csvURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vT_2X7hLkzv-vT2VV7Fh8f15tyngUPblwmGwgGlfFae6MV3yxT3UykBW3UJvSgZJbNw02ihQBoF6YXq/pub?gid=392305567&single=true&output=csv";
 
-<div class="card">
-🦖 RAPTOR HOUSE
-<br><br>
-1250 Points
-</div>
+fetch(csvURL)
+  .then(response => response.text())
+  .then(data => {
 
-<div class="card">
-🦴 T-REX HOUSE
-<br><br>
-1175 Points
-</div>
+    const rows = data.split("\n").slice(1);
 
-<div class="card">
-🌿 TRICERATOPS HOUSE
-<br><br>
-1098 Points
-</div>
+    let houses = [];
 
-<div class="card">
-🥚 BRACHIOSAURUS HOUSE
-<br><br>
-1023 Points
-</div>
+    rows.forEach(row => {
 
-`;
+      const cols = row.split(",");
 
-document.getElementById("activity").innerHTML = `
+      if(cols.length >= 2){
 
-<div class="card">
-🏆 Sarah earned 10 points for attending an event.
-</div>
+        houses.push({
+          name: cols[0],
+          points: parseInt(cols[1]) || 0
+        });
 
-<div class="card">
-🦖 Raptor House moved into 1st place.
-</div>
+      }
 
-<div class="card">
-🌋 New Challenge Released!
-</div>
+    });
 
-`;
-``
+    houses.sort((a,b) => b.points - a.points);
+
+    let html = "";
+
+    houses.forEach((house,index) => {
+
+      html += `
+        <div class="house-card">
+          <h3>#${index + 1}</h3>
+          <h2>${house.name}</h2>
+          <p>${house.points} Points</p>
+        </div>
+      `;
+
+    });
+
+    document.getElementById("leaderboard").innerHTML = html;
+
+  })
+  .catch(error => {
+
+    document.getElementById("leaderboard").innerHTML =
+      "<p>Unable to load standings.</p>";
+
+    console.error(error);
+
+  });
